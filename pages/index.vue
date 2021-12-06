@@ -45,10 +45,11 @@ export default {
   created(){
     //this.$store.dispatch('posts/getJokes');
   },
-  async fetch(){
-    this.$store.dispatch('posts/getJokes');
+  async asyncData({ app }){
+    //console.log(app);
+    app.store.dispatch('posts/getJokes');
   },
-  fetchOnServer: true,
+
 };
 </script>
 

@@ -15,6 +15,6 @@ export const actions = {
 
 export const mutations = {
   setJokes(state, jokes) {
-    state.jokes = jokes
+    state.jokes = [...jokes]
   }
 }

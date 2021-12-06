@@ -18,18 +18,37 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
+  head() {
+    return {
+      title: `Welcome to DAD joke land - ${post.title}`,
+      meta: [
+        { name: `twitter:title", content: "Welcome to DAD joke land - ${post.title}"`},
+        { name: `twitter:description", content: "Best Dad jokes on the internet - ${post.content}"` },
+        { name: "twitter:image", content: "https://i.imgur.com/UYP2umJ.png" },
+        { name: "twitter:card", content: "summary_large_image" }
+      ]
+    };
+  },
   data() {
     return {
       id: this.$route.params.id
     };
   },
+  created(){
+  },
   computed: {
+    ...mapState('posts',['jokes']),
+
+
     post() {
-      return this.$store.state.posts.all.find(post => post.id === this.id);
+      console.log(this.jokes);
+      return this.jokes.find(post => post.id === this.id);
     },
     relatedPosts() {
-      return this.$store.state.posts.all.filter(post => post.id !== this.id);
+      return this.$store.state.jokes.all.filter(post => post.id !== this.id);
     }
   }
 };
