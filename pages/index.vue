@@ -43,8 +43,12 @@ export default {
   },
 
   created(){
-    this.$store.dispatch('posts/getJokes')
-  }
+    //this.$store.dispatch('posts/getJokes');
+  },
+  async fetch(){
+    this.$store.dispatch('posts/getJokes');
+  },
+  fetchOnServer: true,
 };
 </script>
 
