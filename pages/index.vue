@@ -7,7 +7,7 @@
       <div class="links">
         <nuxt-link
           :key="post.id"
-          v-for="post in posts"
+          v-for="post in jokes"
           :to="{name: 'posts-id', params: {id: post.id}}"
           class="button--grey"
         >{{post.title}}</nuxt-link>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Logo from "~/components/Logo.vue";
 
 export default {
@@ -35,9 +36,14 @@ export default {
     };
   },
   computed: {
-    posts() {
-      return this.$store.state.posts.all;
-    }
+    // posts() {
+    //   return this.$store.state.posts.all;
+    // }
+     ...mapState('posts',['jokes'])
+  },
+
+  created(){
+    this.$store.dispatch('posts/getJokes')
   }
 };
 </script>

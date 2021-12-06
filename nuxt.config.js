@@ -35,10 +35,11 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['@nuxtjs/axios'],
   /*
    ** Build configuration
    */
+  axios:{},
   build: {
     /*
      ** You can extend webpack config here
